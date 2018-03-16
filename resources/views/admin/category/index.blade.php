@@ -44,14 +44,14 @@
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->title }}</td>
                             <td>
-                                {{ Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'delete'])}}
-                                <div class="btn-group" role="group">
-                                    <a href="{{route('categories.edit', $category->id)}}"  class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
-                                    <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger btn-sm">
+                              <div class="btn-group" role="group">
+                                <a href="{{route('categories.edit', $category->id)}}"  class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
+                                {{ Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'delete', 'class' => 'btn btn-danger btn-sm'])}}
+                                    <button onclick="return confirm('Вы уверены?')" type="submit">
                                         <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
                                     </button>
-                                </div>
                                 {{Form::close()}}
+                              </div>
                             </td>
                         </tr>
                          @endforeach

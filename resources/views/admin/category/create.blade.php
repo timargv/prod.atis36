@@ -14,8 +14,7 @@
         <!-- Main content -->
         <section class="content">
 
-            {!! Form::open(['route' => 'categories.store']) !!}
-
+            {!! Form::open(['route' => 'categories.store', 'class' => 'awesome']) !!}
 
             <!-- Default box -->
             <div class="box">
