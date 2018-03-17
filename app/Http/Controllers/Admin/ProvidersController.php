@@ -84,19 +84,4 @@ class ProvidersController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
