@@ -17,6 +17,8 @@ class Provider extends Model
     //
     use Sluggable;
 
+    protected $fillable = ['name', 'desc', 'link'];
+
     public function posts(){
 
         return $this->hasMany(Post::class);
@@ -27,12 +29,9 @@ class Provider extends Model
     public function sluggable()
     {
         return [
-
             'slug' => [
-
-                'source' => 'title'
+                'source' => 'name'
             ]
         ];
-
     }
 }

@@ -23,7 +23,7 @@
                     @include('admin.errors')
                 </div>
                 <div class="box-body">
-                    <div class="">
+                    <div class="col-md-6 row">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Название</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="title">
