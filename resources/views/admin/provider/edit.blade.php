@@ -14,6 +14,8 @@
    <!-- Main content -->
    <section class="content">
      {{ Form::open(['route' => ['providers.update', $provider->id], 'method' => 'put']) }}
+     <div class="box">
+
      <!-- Default box -->
       <div class="box-body">
         <div class="col-md-6 row">
@@ -24,7 +26,7 @@
           <div class="form-group">
             <label for="exampleInputLink">Ссылка на Поставщика</label>
             <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="link" value="{{ $provider->link }}">
-          </div>        
+          </div>
           <div class="form-group">
             <label for="exampleInputDesc">Описание Поставщика</label>
             <textarea class="form-control" rows="10" cols="45"  id="exampleInputDesc" name="desc" value="{{ $provider->desc }}"></textarea>

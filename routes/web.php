@@ -16,6 +16,12 @@ Route::get('/', function () {
 });
 
 
-Route::get('/admin', 'Admin\DashboardController@index');
-Route::resource('/admin/categories', 'Admin\CategoriesController');
-Route::resource('/admin/providers', "Admin\ProvidersController");
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
+
+    Route::get('/', 'DashboardController@index');
+    Route::resource('/categories', 'CategoriesController');
+    Route::resource('/providers', 'ProvidersController');
+    Route::resource('/products', 'ProductsController');
+    Route::resource('/users', 'UsersController');
+
+});

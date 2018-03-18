@@ -24,15 +24,15 @@
               <div class="col-md-6 row">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Поставщик</label>
-                  <input type="text" class="form-control" autofocus id="exampleInputEmail1" placeholder="" name="name">
+                  <input type="text" class="form-control" autofocus id="exampleInputEmail1" placeholder="" name="name" value="{{ old('name') }}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputLink">Ссылка на Поставщика</label>
-                  <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="link">
+                  <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="link" value="{{ old('link') }}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputDesc">Описание Поставщика</label>
-                  <textarea class="form-control" rows="10" cols="45"  id="exampleInputDesc" name="desc"></textarea>
+                  <textarea class="form-control" rows="10" cols="45"  id="exampleInputDesc" name="desc"  value="{{ old('desc') }}"></textarea>
                 </div>
               </div>
             </div>

@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email',
     ];
 
     /**
@@ -62,16 +62,25 @@ class User extends Authenticatable
     public function edit($fields) {
 
         $this->fill($fields);
-        $this->password = bcrypt($fields['password']);
+
         $this->save();
 
     }
 
     //-****************************************
 
+    public function generatePassword($password) {
+        if ($password != null) {
+            $this->password = bcrypt($password);
+        }
+        $this->save();
+    }
+
+    //-****************************************
+
     public function remove() {
 
-        Storage::delete('uploads/' . $this->image);
+        $this->removeAvatar();
         $this->delete();
     }
 
@@ -81,24 +90,34 @@ class User extends Authenticatable
 
         if ($image == null) {return;}
 
-        Storage::delete('uploads/' . $this->image);
+        $this->removeAvatar();
+
         $filename = str_random(10) . '.' . $image->extension();
-        $image->saveAs('uploads', $filename);
-        $this->image = $filename;
+        $image->storeAs('uploads', $filename);
+        $this->avatar = $filename;
         $this->save();
 
     }
 
     //-****************************************
 
-    public function getAvatar() {
+    public function removeAvatar() {
+        if ($this->avatar != null){
 
-        if ($this->image == null) {
+            Storage::delete('uploads/' . $this->avatar);
+        }
+    }
+
+    //-****************************************
+
+    public function getImage() {
+
+        if ($this->avatar == null) {
 
             return '/img/no-user-image.png';
         }
 
-        return '/uploads/' . $this->image;
+        return '/uploads/' . $this->avatar;
 
     }
 
