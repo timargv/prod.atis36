@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -24,11 +25,11 @@ class Product extends Model
 {
     //
     use Sluggable;
-    protected $fillable = ['title', 'desc', 'prc', 'num', 'user_id'];
+    protected $fillable = ['title', 'desc', 'prc', 'num', 'site', 'date'];
 
     public function category() {
 
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
 
     }
 
@@ -36,7 +37,7 @@ class Product extends Model
 
     public function provider () {
 
-        return $this->hasOne(Provider::class);
+        return $this->belongsTo(Provider::class);
 
     }
 
@@ -44,7 +45,7 @@ class Product extends Model
 
     public function author () {
 
-        return $this->hasOne(User::class);
+        return $this->BelongsTo(User::class, 'user_id');
 
     }
 
@@ -86,7 +87,7 @@ class Product extends Model
     public function remove() {
 
         //Удалить картинку поста
-        Storage::delete('uploads/' . $this->image);
+        $this->removeImage();
 
         $this->delete();
 
@@ -98,14 +99,24 @@ class Product extends Model
 
         if ($image == null) {return;}
 
-        Storage::delete('uploads/' . $this->image);
+        $this->removeImage();
 
         $filename = str_random(10) . '.' . $image->extension();
-        $image->saveAs('uploads', $filename);
+        $image->storeAs('uploads', $filename);
 
         $this->image = $filename;
         $this->save();
 
+    }
+
+    //-****************************************
+
+    public function removeImage()
+    {
+      if ($this->image != null ) {
+        Storage::delete('uploads/' . $this->image);
+      }
+      $this->save();
     }
 
     //-****************************************
@@ -156,36 +167,42 @@ class Product extends Model
     }
 
     public function toggleStatus($value) {
-
         if ($value == null){
-
             return $this->setDraft();
-
         }
         return $this->setPublic();
+    }
 
+    public function setDateAttribute($value) {
+        $date = Carbon::createFromFormat('d/m/y', $value)->format('Y-m-d');
+        $this->attributes['date'] = $date;
+    }
+
+    public function getDateAttribute($value) {
+        $date = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/y');
+        return $date;
+    }
+
+    public function getCategoryTitle()
+    {
+       return ($this->category != null)
+              ? $this->category->title
+              : 'Нет категории';
+    }
+    public function getProviderTitle()
+    {
+      return ($this->provider != null)
+             ? $this->provider->name
+             : 'Нет поставщика';
+    }
+
+    public function getCategoryID()
+    {
+       return $this->category != null ? $this->category->id : null;
+    }
+    public function getProviderID()
+    {
+      return $this->provider != null ? $this->provider->id : null;
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

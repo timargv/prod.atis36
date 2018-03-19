@@ -10,17 +10,17 @@ use Illuminate\Validation\Rule;
 class UsersController extends Controller
 {
     //-****************************
-    //
+    // Вывод всех пользователей
 
     public function index()
     {
         $users = User::all();
-        return view('admin.users.index', ['users' => $users]);
+        return view('admin.users.index', compact('users'));
     }
 
 
     //-****************************
-    //
+    // Форма создания пользователя
 
     public function create()
     {
@@ -29,7 +29,7 @@ class UsersController extends Controller
 
 
     //-****************************
-    //
+    // Запись данных пользователя в Базу данных
 
     public function store(Request $request)
     {
