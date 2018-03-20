@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
@@ -14,8 +15,10 @@ class UsersController extends Controller
 
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(10);
         return view('admin.users.index', compact('users'));
+//        $users = User::where('id', '>', 100)->paginate(15);
+//        return view('admin.users.index')->with('users', $users);
     }
 
 

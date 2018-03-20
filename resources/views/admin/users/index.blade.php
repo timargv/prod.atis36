@@ -62,6 +62,8 @@
                               </td>
                           </tr>
                           @endforeach
+                        {{ $users->links() }}
+
                         </tfoot>
                     </table>
                 </div>

@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Cviebrock\EloquentSluggable\Tests\Models\Post;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Storage;
@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property int $id
+ * @property mixed $product
  */
 class User extends Authenticatable
 {
@@ -37,9 +38,9 @@ class User extends Authenticatable
 
     //-****************************************
 
-    public function posts () {
+    public function product() {
 
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Product::class);
 
     }
 
