@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
-use phpDocumentor\Reflection\DocBlock\Tags\Factory\Strategy;
+
 
 /**
  * @property \Carbon\Carbon $created_at
@@ -65,12 +65,12 @@ class Product extends Model
 
     public static function add($fields) {
 
-        $post = new static;
-        $post->fill($fields);
-        $post->user_id = 1;
-        $post->save();
+        $product = new static;
+        $product->fill($fields);
+        $product->user_id = 1;
+        $product->save();
 
-        return $post;
+        return $product;
 
     }
 
