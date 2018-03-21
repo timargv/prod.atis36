@@ -3,14 +3,14 @@
 namespace App;
 
 use Cviebrock\EloquentSluggable\Sluggable;
-use Cviebrock\EloquentSluggable\Tests\Models\Post;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property int $id
- * @property mixed $posts
+ * @property mixed $products
+ * @property mixed $mproviders
  */
 class Provider extends Model
 {
@@ -19,10 +19,13 @@ class Provider extends Model
 
     protected $fillable = ['name', 'desc', 'link'];
 
-    public function posts(){
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
 
-        return $this->hasMany(Post::class);
 
+    public function mproviders(){
+        return $this->hasMany(Mprovider::class, 'id_provider');
     }
 
 

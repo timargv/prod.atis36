@@ -29,7 +29,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputDesc">Описание Поставщика</label>
-            <textarea class="form-control" rows="10" cols="45"  id="exampleInputDesc" name="desc" value="{{ $provider->desc }}"></textarea>
+            <textarea class="form-control" rows="10" cols="45"  id="exampleInputDesc" name="desc">{{ $provider->desc }}</textarea>
           </div>
         </div>
       </div>

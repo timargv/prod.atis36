@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateManagerProvidersTable extends Migration
+class CreateMprovidersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateManagerProvidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('manager_providers', function (Blueprint $table) {
+        Schema::create('mproviders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name_con_p');
             $table->string('surname_con_p')->nullable();
             $table->string('patronymic_con_p')->nullable();
             $table->string('position_con_p')->nullable();
-            $table->integer('mobile_con_p')->nullable();
-            $table->integer('office_con_p')->nullable();
-            $table->integer('officedob_con_p')->nullable();
+            $table->bigInteger('mobile_con_p')->nullable();
+            $table->bigInteger('office_con_p')->nullable();
+            $table->bigInteger('officedob_con_p')->nullable();
             $table->string('email_con_p')->nullable();
             $table->integer('id_provider');
+            $table->string('slug');
             $table->timestamps();
         });
     }
@@ -35,6 +36,6 @@ class CreateManagerProvidersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manager_providers');
+        Schema::dropIfExists('mproviders');
     }
 }

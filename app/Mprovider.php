@@ -6,28 +6,24 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property int user_id
+ * @property \Carbon\Carbon $created_at
+ * @property int $id
+ * @property \Carbon\Carbon $updated_at
+ * @property mixed $provider
+ * @property  provider_id
+ * @property int $provider_id
  */
-class managerProvider extends Model
+class Mprovider extends Model
 {
-    //
+
     use Sluggable;
 
     protected $fillable = ['name_con_p', 'surname_con_p', 'patronymic_con_p', 'position_con_p', 'mobile_con_p', 'office_con_p', 'officedob_con_p', 'email_con_p'];
 
     //-****************************************
 
-    public function provider () {
-
+    public function provider() {
         return $this->belongsTo(Provider::class);
-
-    }
-
-    //-****************************************
-
-    public function author () {
-
-        return $this->BelongsTo(User::class, 'user_id');
 
     }
 
@@ -44,12 +40,13 @@ class managerProvider extends Model
 
     //-****************************************
 
-    public static function add($fields) {
+    public function add($fields) {
+        $mprovider = new static();
+        $mprovider->fill($fields);
+        $mprovider->user_id = 1;
+        $mprovider->save();
 
-        $manager_provider = new static();
-        $manager_provider->fill($fields);
-        $manager_provider->user_id = 1;
-        $manager_provider->save();
+        return $mprovider;
     }
 
     //-****************************************
@@ -60,27 +57,25 @@ class managerProvider extends Model
     }
 
     //-****************************************
-
+    // Сохранить поставщика
     public function setProvider($id) {
-        if ($id != null) {return;}
-        $this->id_provider = $id;
+        if ($id == null) {return;}
+        $this->provider_id = $id;
         $this->save();
     }
 
     //-****************************************
-
-    public function getProviderTitle()
-    {
-        return ($this->provider != null)
+    // Получение имени поставщика
+    public function getProviderTitle() {
+        return($this->provider != null)
             ? $this->provider->name
             : 'Нет поставщика';
     }
 
     //-****************************************
-
-    public function getProviderID()
-    {
-        return $this->provider != null ? $this->provider->id : null;
+    // Получение ID поставщика
+    public function getProviderID() {
+        return ($this->provider != null) ? $this->provider->id : null;
     }
 
 

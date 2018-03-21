@@ -22,56 +22,54 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Листинг сущности</h3>
+                    <h3 class="box-title">Контакты менеджеров</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <a href="{{route('providers.create')}}" class="btn btn-success">Добавить</a>
+                        <a href="{{ route('manager-providers.create') }}" class="btn btn-success">Добавить</a>
                     </div>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th style="width: 50px">ID</th>
-                            <th>Название</th>
-                            <th>Название</th>
-                            <th>Название</th>
-                            <th>Название</th>
-                            <th>Название</th>
-                            <th>Название</th>
-                            <th>Название</th>
-                            <th>Название</th>
+                            <th>Имя</th>
+                            <th>Фамилия</th>
+                            {{--<th>Отчество</th>--}}
+                            <th>Должность</th>
+                            <th>Моб. номер</th>
+                            <th>Тел. Оффис</th>
+                            <th>Добавочный</th>
+                            <th>Email</th>
                             <th>Название</th>
                             <th style="width: 100px">Действия</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($manager_providers as $managerprovider)
+                        @foreach($mproviders as $mprovider)
 
                         <tr>
-                            <td>{{ $managerprovider->id }}</td>
-                            <td>{{ $managerprovider->name_con_p }}</td>
-                            <td>{{ $managerprovider->surname_con_p }}</td>
-                            <td>{{ $managerprovider->patronymic_con_p }}</td>
-                            <td>{{ $managerprovider->position_con_p }}</td>
-                            <td>{{ $managerprovider->mobile_con_p }}</td>
-                            <td>{{ $managerprovider->office_con_p }}</td>
-                            <td>{{ $managerprovider->officedob_con_p }}</td>
-                            <td>{{ $managerprovider->email_con_p }}</td>
-                            <td>{{ $managerprovider->getProviderTitle() }}</td>
+                            <td>{{ $mprovider->id }}</td>
+                            <td>{{ $mprovider->name_con_p }}</td>
+                            <td>{{ $mprovider->surname_con_p }}</td>
+{{--                            <td>{{ $mprovider->patronymic_con_p }}</td>--}}
+                            <td>{{ $mprovider->position_con_p }}</td>
+                            <td>{{ $mprovider->mobile_con_p }}</td>
+                            <td>{{ $mprovider->office_con_p }}</td>
+                            <td>{{ $mprovider->officedob_con_p }}</td>
+                            <td>{{ $mprovider->email_con_p }}</td>
+                            <td>{{ $mprovider->getProviderTitle() }}</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a href="{{route('manager-providers.edit', $managerprovider->id)}}"  class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
-                                    {{ Form::open(['route' => ['managerproviders.destroy', $managerprovider->id], 'method' => 'delete', 'class' => 'btn btn-danger btn-sm'])}}
-                                    <button onclick="return confirm('Вы уверены?')" type="submit">
-                                        <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
-                                    </button>
-                                    {{Form::close()}}
+                                    <a href="{{route('manager-providers.edit', $mprovider->id)}}"  class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
+
                                 </div>
                             </td>
                         </tr>
                          @endforeach
                         </tbody>
+                        {{ $mproviders->links() }}
+
                     </table>
                 </div>
                 <!-- /.box-body -->
