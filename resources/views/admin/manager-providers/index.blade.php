@@ -32,37 +32,42 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th style="width: 50px">ID</th>
-                            <th>Имя</th>
-                            <th>Фамилия</th>
+                            <th style="width: 10px">ID</th>
+                            <th>Имя Фамилия</th>
+                            {{--<th>Фамилия</th>--}}
                             {{--<th>Отчество</th>--}}
                             <th>Должность</th>
-                            <th>Моб. номер</th>
-                            <th>Тел. Оффис</th>
-                            <th>Добавочный</th>
+                            <th>Моб.</th>
+                            <th>Тел.</th>
+                            {{--<th>Доб.</th>--}}
                             <th>Email</th>
-                            <th>Название</th>
-                            <th style="width: 100px">Действия</th>
+                            <th>Компания</th>
+                            <th style="width: 50px">Действия</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($mproviders as $mprovider)
 
+                        @foreach($mproviders as $mprovider)
                         <tr>
                             <td>{{ $mprovider->id }}</td>
-                            <td>{{ $mprovider->name_con_p }}</td>
-                            <td>{{ $mprovider->surname_con_p }}</td>
+                            <td>{{ $mprovider->name_con_p }} {{ $mprovider->surname_con_p }}</td>
+                            {{--<td>{{ $mprovider->surname_con_p }}</td>--}}
 {{--                            <td>{{ $mprovider->patronymic_con_p }}</td>--}}
                             <td>{{ $mprovider->position_con_p }}</td>
                             <td>{{ $mprovider->mobile_con_p }}</td>
-                            <td>{{ $mprovider->office_con_p }}</td>
-                            <td>{{ $mprovider->officedob_con_p }}</td>
+                            <td>{{ $mprovider->office_con_p }} <br /> <mark><small>доб</small> {{ $mprovider->officedob_con_p }}</mark></td>
+{{--                            <td>{{ $mprovider->officedob_con_p }}</td>--}}
                             <td>{{ $mprovider->email_con_p }}</td>
                             <td>{{ $mprovider->getProviderTitle() }}</td>
                             <td>
                                 <div class="btn-group" role="group">
                                     <a href="{{route('manager-providers.edit', $mprovider->id)}}"  class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
-
+                                    {{ Form::open(['route' => ['manager-providers.destroy', $mprovider->id], 'method' => 'delete', 'class' => 'btn btn-danger btn-sm'])}}
+                                    <button onclick="return confirm('Вы уверены?')" type="submit">
+                                        <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
+                                    </button>
+                                    {{Form::close()}}
+                                </div>
                                 </div>
                             </td>
                         </tr>

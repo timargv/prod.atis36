@@ -40,20 +40,24 @@
                             <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="position_con_p" value="{{ $mprovider->position_con_p }}">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputLink">Ссылка на Поставщика</label>
-                            <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="office_con_p" value="{{ $mprovider->office_con_p }}">
+                            <label for="exampleInputLink">Мобильный телефон</label>
+                            <input type="text" class="form-control" id="exampleInputMobil" placeholder="" name="mobile_con_p" value="{{ $mprovider->mobile_con_p }}" data-inputmask="'alias': 'phone'">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputLink">Ссылка на Поставщика</label>
-                            <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="officedob_con_p" value="{{ $mprovider->officedob_con_p }}">
+                            <input type="text" class="form-control" id="exampleInputOffice" placeholder="" name="office_con_p" value="{{ $mprovider->office_con_p }}" data-inputmask="'alias': 'phone'">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputLink">Ссылка на Поставщика</label>
-                            <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="email_con_p" value="{{ $mprovider->email_con_p }}">
+                            <input type="text" class="form-control" id="exampleInputOfficeDob" placeholder="" name="officedob_con_p" value="{{ $mprovider->officedob_con_p }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputLink">Ссылка на Поставщика</label>
+                            <input type="text" class="form-control" id="exampleInputEmail" placeholder="" name="email_con_p" value="{{ $mprovider->email_con_p }}" data-inputmask="'alias': 'email'">
                         </div>
                         <div class="form-group">
                             <label>Компания</label>
-                            {{ Form::select('id_provider',
+                            {{ Form::select('provider_id',
                               $providers,
                               $mprovider->getProviderID(),
                               ['class' => 'form-control select2', 'style' => 'width: 100%;'])

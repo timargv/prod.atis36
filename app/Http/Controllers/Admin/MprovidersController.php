@@ -15,8 +15,7 @@ class MprovidersController extends Controller
 
     public function index()
     {
-        $mproviders = Mprovider::paginate(10);
-//        $mproviders =  DB::table('mproviders')->paginate(15);
+        $mproviders = Mprovider::paginate(1);
         return view('admin.manager-providers.index', compact('mproviders'));
     }
 
@@ -45,11 +44,11 @@ class MprovidersController extends Controller
             'office_con_p' => 'nullable',
             'officedob_con_p' => 'nullable',
             'email_con_p' => 'nullable',
-            'id_provider' => 'nullable',
+            'provider_id' => 'nullable'
         ]);
 
-        $mprovider = Mprovider::all($request->all());
-        $mprovider->setProvider($request->get('id_provider'));
+        $mprovider = Mprovider::add($request->all());
+        $mprovider->setProvider($request->get('provider_id'));
         return redirect()->route('manager-providers.index');
     }
 
@@ -59,7 +58,7 @@ class MprovidersController extends Controller
     {
         $mprovider = Mprovider::find($id);
         $providers = Provider::pluck('name', 'id')->all();
-        return view('admin.manager-providers.edit', compact('mprovider', 'providers'));
+        return view('admin.manager-providers.edit', compact('providers', 'mprovider'));
     }
 
     //-****************************************
@@ -75,12 +74,12 @@ class MprovidersController extends Controller
             'office_con_p' => 'nullable',
             'officedob_con_p' => 'nullable',
             'email_con_p' => 'nullable',
-            'id_provider' => 'nullable',
+            'provider_id' => 'nullable',
         ]);
 
         $mprovider = Mprovider::find($id);
         $mprovider->edit($request->all());
-        $mprovider->setProvider($request->get('id_provider'));
+        $mprovider->setProvider($request->get('provider_id'));
         return redirect()->route('manager-providers.index');
 
     }
@@ -89,6 +88,7 @@ class MprovidersController extends Controller
 
     public function destroy($id)
     {
-        //
+        Mprovider::find($id)->delete();
+        return redirect()->route('manager-providers.index');
     }
 }

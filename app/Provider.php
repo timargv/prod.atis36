@@ -25,7 +25,7 @@ class Provider extends Model
 
 
     public function mproviders(){
-        return $this->hasMany(Mprovider::class, 'id_provider');
+        return $this->hasMany(Mprovider::class, 'provider_id');
     }
 
 

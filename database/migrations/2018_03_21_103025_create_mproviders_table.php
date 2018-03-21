@@ -19,11 +19,12 @@ class CreateMprovidersTable extends Migration
             $table->string('surname_con_p')->nullable();
             $table->string('patronymic_con_p')->nullable();
             $table->string('position_con_p')->nullable();
-            $table->bigInteger('mobile_con_p')->nullable();
-            $table->bigInteger('office_con_p')->nullable();
-            $table->bigInteger('officedob_con_p')->nullable();
+            $table->string('mobile_con_p')->nullable();
+            $table->string('office_con_p')->nullable();
+            $table->integer('officedob_con_p')->nullable();
             $table->string('email_con_p')->nullable();
-            $table->integer('id_provider');
+            $table->integer('provider_id')->nullable();
+            $table->integer('user_id')->nullable();
             $table->string('slug');
             $table->timestamps();
         });

@@ -12,7 +12,7 @@ $factory->define(App\Mprovider::class, function (Faker $faker) {
         'office_con_p' => 74731001010,
         'officedob_con_p' => 256,
         'email_con_p' => $faker->safeEmail,
-        'id_provider' => $faker->randomNumber(1),
+        'provider_id' => $faker->randomNumber(1),
         'slug' => $faker->uuid,
     ];
 });

@@ -10,8 +10,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property \Carbon\Carbon $updated_at
  * @property mixed $provider
- * @property  provider_id
  * @property int $provider_id
+ * @property mixed $id_provider
+ * @property int user_id
+ * @property mixed $author
  */
 class Mprovider extends Model
 {
@@ -27,20 +29,26 @@ class Mprovider extends Model
 
     }
 
+    public function author () {
+
+        return $this->BelongsTo(User::class, 'user_id');
+
+    }
+
     //-****************************************
 
     public function sluggable()
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'name_con_p'
             ]
         ];
     }
 
     //-****************************************
 
-    public function add($fields) {
+    public static function add($fields) {
         $mprovider = new static();
         $mprovider->fill($fields);
         $mprovider->user_id = 1;

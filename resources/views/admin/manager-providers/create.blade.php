@@ -23,12 +23,12 @@
             <div class="box-body">
               <div class="col-md-6 row">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Менеджера</label>
-                  <input type="text" class="form-control" autofocus id="exampleInputEmail1" placeholder="" name="name_con_p" value="{{ old('name_con_p') }}">
+                  <label for="exampleInputName">Менеджера</label>
+                  <input type="text" class="form-control" autofocus id="exampleInputName" placeholder="" name="name_con_p" value="{{ old('name_con_p') }}">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputLink">Ссылка на Поставщика</label>
-                  <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="surname_con_p" value="{{ old('surname_con_p') }}">
+                  <label for="exampleInputSurname">Ссылка на Поставщика</label>
+                  <input type="text" class="form-control" id="exampleInputSurname" placeholder="" name="surname_con_p" value="{{ old('surname_con_p') }}">
                 </div>
                   <div class="form-group">
                       <label for="exampleInputLink">Ссылка на Поставщика</label>
@@ -39,20 +39,24 @@
                       <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="position_con_p" value="{{ old('position_con_p') }}">
                   </div>
                   <div class="form-group">
-                      <label for="exampleInputLink">Ссылка на Поставщика</label>
-                      <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="office_con_p" value="{{ old('office_con_p') }}">
+                      <label for="exampleInputLink">Мобильный телефон</label>
+                      <input type="text" class="form-control" id="exampleInputMobil" placeholder="" name="mobile_con_p" value="{{ old('mobile_con_p') }}" data-inputmask="'alias': 'phone'">
                   </div>
                   <div class="form-group">
                       <label for="exampleInputLink">Ссылка на Поставщика</label>
-                      <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="officedob_con_p" value="{{ old('officedob_con_p') }}">
+                      <input type="text" class="form-control" id="exampleInputOffice" placeholder="" name="office_con_p" value="{{ old('office_con_p') }}">
                   </div>
                   <div class="form-group">
                       <label for="exampleInputLink">Ссылка на Поставщика</label>
-                      <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="email_con_p" value="{{ old('email_con_p') }}">
+                      <input type="text" class="form-control" id="exampleInputOfficeDob" placeholder="" name="officedob_con_p" value="{{ old('officedob_con_p') }}">
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleInputLink">Email Менеджера</label>
+                      <input type="text" class="form-control" id="exampleInputEmail" placeholder="" name="email_con_p" value="{{ old('email_con_p') }}" data-inputmask="'alias': 'email'">
                   </div>
                   <div class="form-group">
                       <label>Категория</label>
-                      {{ Form::select('id_provider',
+                      {{ Form::select('provider_id',
                         $providers,
                         null,
                         ['class' => 'form-control select2', 'style' => 'width: 100%;'])
@@ -64,7 +68,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer" style="padding: 15px 10px 15px;">
-                <a href="{{ route('providers.index') }}" class="btn btn-default">Назад</a>
+                <a href="{{ route('manager-providers.index') }}" class="btn btn-default">Назад</a>
                 <button class="btn btn-success pull-right">Добавить</button>
             </div>
           <!-- /.box-footer-->

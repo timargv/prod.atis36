@@ -11,4 +11,8 @@ $(document).ready(function (){
       checkboxClass: 'icheckbox_minimal-blue',
       radioClass: 'iradio_minimal-blue'
     });
+
+    $("#exampleInputMobil").inputmask("+7 (999) 999-99-99");
+    $("#exampleInputOffice").inputmask("+7 (999) 999-99-99");
+    // $("#exampleInputEmail").inputmask("_____@_.");
 });
