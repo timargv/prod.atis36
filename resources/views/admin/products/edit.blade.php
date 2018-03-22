@@ -34,11 +34,11 @@
             </div>
             <div class="form-group">
               <label for="exampleInputSite">Атис36</label>
-              <input type="text" class="form-control" id="exampleInputSite" placeholder="" name="site" value="{{ $product->site }}">
+              <input type="url" class="form-control" id="exampleInputSite" placeholder="" name="site" value="{{ $product->site }}">
             </div>
             <div class="form-group">
               <label for="exampleInputPrc">Цена</label>
-              <input type="text" class="form-control" id="exampleInputPrc" placeholder="" name="prc" value="{{ $product->prc }}">
+              <input type="number" min="1" step="any" class="form-control" id="exampleInputPrc" placeholder="" name="prc" value="{{ $product->prc }}">
             </div>
             <div class="form-group">
               <img src="{{ $product->getImage() }}" alt="" class="img-responsive" width="150">

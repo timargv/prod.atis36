@@ -15,7 +15,7 @@ class MprovidersController extends Controller
 
     public function index()
     {
-        $mproviders = Mprovider::paginate(1);
+        $mproviders = Mprovider::paginate(10);
         return view('admin.manager-providers.index', compact('mproviders'));
     }
 

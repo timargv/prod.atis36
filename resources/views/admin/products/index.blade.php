@@ -32,13 +32,13 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>ID</th>
+                  <th style="width: 50px">ID</th>
                   <th>Название</th>
                   <th>Артикул</th>
                   <th>Поставщик</th>
                   <th>Цена</th>
                   <th>Картинка</th>
-                  <th>Действия</th>
+                  <th style="width: 100px">Действия</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,9 +48,14 @@
                       <td>{{ $product->title }}</td>
                       <td><a href="{{ $product->site }}" target="_blank">@if ($product->site != null)<i class="fa fa-external-link" aria-hidden="true"></i>@endif {{ $product->num }}</a></td>
                       {{-- <td>{{ $product->getCategoryTitle() }}</td> --}}
-                      <td>{{ $product->getProviderTitle() }}</td>
+                      <td>
+                        @if ($product->getProviderID() != null)
+                          <a href="{{ $product->getProviderLink() }}" target="_blank">{{ $product->getProviderTitle() }}</a>
+                        @else
+                          {{ $product->getProviderTitle() }}
+                        @endif
+                      </td>
                       <td>{{ $product->prc }}</td>
-
                       <td>
                         <img src="{{ $product->getImage() }}" alt="" width="50">
                       </td>

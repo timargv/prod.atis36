@@ -34,11 +34,11 @@
             </div>
             <div class="form-group">
               <label for="exampleInputSite">Атис36</label>
-              <input type="text" class="form-control" id="exampleInputSite" placeholder="" name="site" value="{{ old('site') }}">
+              <input type="url" class="form-control" id="exampleInputSite" placeholder="" name="site" value="{{ old('site') }}">
             </div>
             <div class="form-group">
               <label for="exampleInputPrc">Цена</label>
-              <input type="text" class="form-control" id="exampleInputPrc" placeholder="" name="prc" value="{{ old('prc') }}">
+              <input type="number" min="1" step="any" class="form-control" id="exampleInputPrc" placeholder="1.123,50" name="prc" value="{{ old('prc') }}">
             </div>
             <div class="form-group">
               <label for="exampleInputFile">Картинка товара</label>
@@ -56,7 +56,7 @@
 
             </div>
             <div class="form-group">
-              <label>Потсавщики</label>
+              <label>Поставщики</label>
 
               {{--
                 Для тегов

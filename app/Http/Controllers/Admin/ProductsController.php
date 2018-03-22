@@ -36,7 +36,7 @@ class ProductsController extends Controller
           'title' => 'required',
           'num' => 'required',
           'site' => 'required',
-          'prc' => 'required',
+          'prc' => 'required|numeric',
           'desc' => 'nullable',
           'date' => 'nullable',
           'image' => 'nullable|image',

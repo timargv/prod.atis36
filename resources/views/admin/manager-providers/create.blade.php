@@ -6,8 +6,8 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Добавить Поставщика
-          <small>приятные слова..</small>
+          Добавить Менеджера
+          <small>..</small>
         </h1>
       </section>
 
@@ -22,40 +22,48 @@
             </div>
             <div class="box-body">
               <div class="col-md-6 row">
-                <div class="form-group">
-                  <label for="exampleInputName">Менеджера</label>
-                  <input type="text" class="form-control" autofocus id="exampleInputName" placeholder="" name="name_con_p" value="{{ old('name_con_p') }}">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputSurname">Ссылка на Поставщика</label>
-                  <input type="text" class="form-control" id="exampleInputSurname" placeholder="" name="surname_con_p" value="{{ old('surname_con_p') }}">
-                </div>
-                  <div class="form-group">
-                      <label for="exampleInputLink">Ссылка на Поставщика</label>
-                      <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="patronymic_con_p" value="{{ old('patronymic_con_p') }}">
+                  <div class="row">
+                    <div class="form-group col-xs-4">
+                      <label for="exampleInputName">Имя *</label>
+                      <input type="text" class="form-control" autofocus id="exampleInputName" placeholder="" name="name_con_p" value="{{ old('name_con_p') }}">
+                    </div>
+                    <div class="form-group col-xs-4">
+                      <label for="exampleInputSurname">Фамилия</label>
+                      <input type="text" class="form-control" id="exampleInputSurname" placeholder="" name="surname_con_p" value="{{ old('surname_con_p') }}">
+                    </div>
+                      <div class="form-group col-xs-4">
+                          <label for="exampleInputLink">Отчество</label>
+                          <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="patronymic_con_p" value="{{ old('patronymic_con_p') }}">
+                      </div>
+
                   </div>
                   <div class="form-group">
-                      <label for="exampleInputLink">Ссылка на Поставщика</label>
+                      <label for="exampleInputLink">Должность</label>
                       <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="position_con_p" value="{{ old('position_con_p') }}">
                   </div>
                   <div class="form-group">
                       <label for="exampleInputLink">Мобильный телефон</label>
-                      <input type="text" class="form-control" id="exampleInputMobil" placeholder="" name="mobile_con_p" value="{{ old('mobile_con_p') }}" data-inputmask="'alias': 'phone'">
+                      <input type="text" class="form-control" id="exampleInputMobil" placeholder="+7 (920) ___-__-__" name="mobile_con_p" value="{{ old('mobile_con_p') }}" data-inputmask="'alias': 'phone'">
                   </div>
                   <div class="form-group">
-                      <label for="exampleInputLink">Ссылка на Поставщика</label>
-                      <input type="text" class="form-control" id="exampleInputOffice" placeholder="" name="office_con_p" value="{{ old('office_con_p') }}">
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <label for="exampleInputOffice">Оффисный номер</label>
+                          <input type="text" class="form-control" id="exampleInputOffice" placeholder="+7 (473) ___-__-__" name="office_con_p" value="{{ old('office_con_p') }}">
+                        </div>
+                        <div class="col-xs-2">
+                          <label for="exampleInputOfficeDob">Добавочный</label>
+                          <input type="text" class="form-control" id="exampleInputOfficeDob" placeholder="123" name="officedob_con_p" value="{{ old('officedob_con_p') }}">
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="exampleInputLink">Email</label>
+                      <input type="text" class="form-control" id="exampleInputEmail" placeholder="name@example.ru" name="email_con_p" value="{{ old('email_con_p') }}" data-inputmask="'alias': 'email'">
                   </div>
                   <div class="form-group">
-                      <label for="exampleInputLink">Ссылка на Поставщика</label>
-                      <input type="text" class="form-control" id="exampleInputOfficeDob" placeholder="" name="officedob_con_p" value="{{ old('officedob_con_p') }}">
-                  </div>
-                  <div class="form-group">
-                      <label for="exampleInputLink">Email Менеджера</label>
-                      <input type="text" class="form-control" id="exampleInputEmail" placeholder="" name="email_con_p" value="{{ old('email_con_p') }}" data-inputmask="'alias': 'email'">
-                  </div>
-                  <div class="form-group">
-                      <label>Категория</label>
+                      <label>Компания *</label>
                       {{ Form::select('provider_id',
                         $providers,
                         null,

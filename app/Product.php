@@ -205,4 +205,10 @@ class Product extends Model
       return $this->provider != null ? $this->provider->id : null;
     }
 
+    //-****************************************
+    // Получение ID поставщика
+    public function getProviderLink() {
+        return ($this->provider != null) ? $this->provider->link : null;
+    }
+
 }

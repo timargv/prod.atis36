@@ -37,7 +37,20 @@ class ProvidersController extends Controller
       $this->validate($request, [
         'name' => 'required',
         'link' => 'required',
-        'desc' => 'nullable'
+        'desc' => 'nullable',
+        'full_name_provider' => 'nullable',
+        'ur_address_provider' => 'nullable',
+        'fz_address_provider' => 'nullable',
+        'inn_provider' => 'nullable|numeric',
+        'kpp_provider' => 'nullable|numeric',
+        'rsch_provider' => 'nullable|numeric',
+        'krch_provider' => 'nullable|numeric',
+        'bancon_provider' => 'nullable',
+        'bik_provider' => 'nullable|numeric',
+        'ogrn_provider' => 'nullable|numeric',
+        'telephone_provider' => 'nullable',
+        'director_provider' => 'nullable',
+        'email_provider' => 'nullable|email'
       ]);
 
       Provider::create($request->all());
@@ -64,7 +77,20 @@ class ProvidersController extends Controller
       $this->validate($request, [
         'name' => 'required',
         'link' => 'required',
-        'desc' => 'nullable'
+        'desc' => 'nullable',
+        'full_name_provider' => 'nullable',
+        'ur_address_provider' => 'nullable',
+        'fz_address_provider' => 'nullable',
+        'inn_provider' => 'nullable|numeric',
+        'kpp_provider' => 'nullable|numeric',
+        'rsch_provider' => 'nullable|numeric',
+        'krch_provider' => 'nullable|numeric',
+        'bancon_provider' => 'nullable',
+        'bik_provider' => 'nullable|numeric',
+        'ogrn_provider' => 'nullable|numeric',
+        'telephone_provider' => 'nullable',
+        'director_provider' => 'nullable',
+        'email_provider' => 'nullable|email'
       ]);
 
       $provider = Provider::find($id);

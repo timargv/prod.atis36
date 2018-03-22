@@ -6,8 +6,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Поставщики
-                <small>it all starts here</small>
+                Менеджеры
+                <small>...</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -55,7 +55,7 @@
 {{--                            <td>{{ $mprovider->patronymic_con_p }}</td>--}}
                             <td>{{ $mprovider->position_con_p }}</td>
                             <td>{{ $mprovider->mobile_con_p }}</td>
-                            <td>{{ $mprovider->office_con_p }} <br /> <mark><small>доб</small> {{ $mprovider->officedob_con_p }}</mark></td>
+                            <td><h5>{{ $mprovider->office_con_p }}  <span class="label label-default" data-toggle="tooltip" data-placement="top" title="Добавочный номер">{{ $mprovider->officedob_con_p }}</span></h5></td>
 {{--                            <td>{{ $mprovider->officedob_con_p }}</td>--}}
                             <td>{{ $mprovider->email_con_p }}</td>
                             <td>{{ $mprovider->getProviderTitle() }}</td>
@@ -73,9 +73,10 @@
                         </tr>
                          @endforeach
                         </tbody>
-                        {{ $mproviders->links() }}
 
                     </table>
+                    {{ $mproviders->links() }}
+
                 </div>
                 <!-- /.box-body -->
             </div>
