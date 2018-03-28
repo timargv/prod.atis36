@@ -6,7 +6,6 @@
     <title>AdminLTE 2 | Blank Page</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
     <link rel="stylesheet" href="/css/admin.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -176,16 +175,16 @@
     <!-- =============================================== -->
     <!-- Left side column. contains the sidebar -->
     <aside class="main-sidebar">
-    @include('admin.asid')
+        @include('admin.asid')
     </aside>
 
     <!-- =============================================== -->
 
     <!-- Content Wrapper. Contains page content -->
 
-    @yield('content')
+@yield('content')
 
-    <!-- /.content-wrapper -->
+<!-- /.content-wrapper -->
 
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -392,7 +391,13 @@
 </div>
 
 <script src="/js/admin.js"></script>
- 
+<script type="text/javascript">
+    $("#checkAll").change(function () {
+        $("input:checkbox").prop('checked', $(this).prop("checked")).addClass('csa');
+    });
+
+
+</script>
 
 </body>
 </html>

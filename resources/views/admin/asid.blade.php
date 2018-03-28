@@ -45,6 +45,7 @@
             </li> --}}
             <li {{{ (Request::is('admin/users') ? 'class=active' : '') }}}><a href="{{ route('users.index') }}"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
             <li {{{ (Request::is('admin/manager-providers') ? 'class=active' : '') }}}><a href="{{ route('manager-providers.index') }}"><i class="fa fa-users"></i> <span>Менеджеры</span></a></li>
+{{--            <li><a href="{{{ (Request::is('admin') ? 'admin/import-export/providers/import' : 'import-export/providers/import') }}}"><i class="fa fa-users"></i> <span>Import</span></a></li>--}}
             {{-- <li><a href="#"><i class="fa fa-user-plus"></i> <span>Подписчики</span></a></li> --}}
 
         </ul>

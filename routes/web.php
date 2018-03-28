@@ -24,4 +24,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
     Route::resource('/products', 'ProductsController');
     Route::resource('/users', 'UsersController');
     Route::resource('/manager-providers', 'MprovidersController');
+
+
+    Route::get('/import-export', 'ExcelprovidersController@export');
+    Route::post('/import-export', 'ExcelprovidersController@import');
+    Route::get('/import-export', 'ExcelprovidersController@index');
+
+    Route::post('/del', 'ProvidersController@del');
 });

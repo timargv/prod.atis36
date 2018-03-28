@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Provider;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 
 class ProvidersController extends Controller
@@ -108,6 +109,16 @@ class ProvidersController extends Controller
       Provider::find($id)->delete();
       return redirect()->route('providers.index');
     }
+
+    public function del(Request $request) {
+        $delid = $request->input('delid');
+
+        Provider::whereIn('id', $delid)->delete();
+        return redirect()->route('providers.index')->with('sec', 'provider');
+
+    }
+
+
 
 
 }
