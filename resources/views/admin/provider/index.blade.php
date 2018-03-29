@@ -13,7 +13,6 @@
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li><a href="#">Examples</a></li>
                 <li class="active">Blank page</li>
-{{--                <a href="{{route('providers.export.export')}}" class="btn btn-success">Export</a>--}}
 
             </ol>
         </section>
@@ -27,53 +26,70 @@
                     <h3 class="box-title">Листинг сущности</h3>
                 </div>
                 <!-- /.box-header -->
-                <form method="POST" action="{{ Url('/admin/del') }}">
-                    {!! csrf_field() !!}
+
 
                     <div class="box-body">
                     <div class="form-group">
                         <a href="{{route('providers.create')}}" class="btn btn-success">Добавить</a>
-                            @if($providers->count())
+                        <a href="{{ route('provider.export') }}" class="btn btn-success">Export</a>
+                        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Import
+                        </a>
+
+                    @if($providers->count())
                             <button class="btn btn-danger pull-right" type="submit">Удалить выделеные</button>
                         @endif
                     </div>
-                    <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th style="width: 50px">ID</th>
-                            <th>Название</th>
-                            <th style="width: 100px">Действия</th>
-                            @if($providers->count())  <th width="20px"><input type="checkbox" id="checkAll"></th> @endif
+                        <div class="collapse" id="collapseExample">
+                            <div class="well">
+                                <form method="post" action="{{ route('provider.import') }}" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    <div class="form-group">
+                                        <input type="file" id="exampleInputFile">
+                                    </div>
+                                    <button type="submit" class="btn btn-default">Отправить</button>
+                                </form>
 
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @if($providers->count())
-                        @foreach($providers as $provider)
+                            </div>
+                        </div>
+                        <form method="POST" action="{{ Url('/admin/del') }}">
+                            {!! csrf_field() !!}
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th style="width: 50px">ID</th>
+                                    <th>Название</th>
+                                    <th style="width: 100px">Действия</th>
+                                    @if($providers->count())  <th width="20px"><input type="checkbox" id="checkAll"></th> @endif
 
-                        <tr>
-                            <td>{{ $provider->id }}</td>
-                            <td>{{ $provider->name }}</td>
-                            <td>
-                              <div class="btn-group" role="group">
-                                <a href="{{route('providers.edit', $provider->id)}}"  class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
-                                {{--{{ Form::open(['route' => ['providers.destroy', $provider->id], 'method' => 'delete', 'class' => 'btn btn-danger btn-sm'])}}--}}
-                                    {{--<button onclick="return confirm('Вы уверены?')" type="submit">--}}
-                                        {{--<i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>--}}
-                                    {{--</button>--}}
-                                {{--{{Form::close()}}--}}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if($providers->count())
+                                @foreach($providers as $provider)
 
-                              </div>
-                            </td>
-                            <td><input type="checkbox" name="delid[]" value="{{ $provider->id }}" >   </td>
+                                <tr>
+                                    <td>{{ $provider->id }}</td>
+                                    <td>{{ $provider->name }}</td>
+                                    <td>
+                                      <div class="btn-group" role="group">
+                                        <a href="{{route('providers.edit', $provider->id)}}"  class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
+                                        {{--{{ Form::open(['route' => ['providers.destroy', $provider->id], 'method' => 'delete', 'class' => 'btn btn-danger btn-sm'])}}--}}
+                                            {{--<button onclick="return confirm('Вы уверены?')" type="submit">--}}
+                                                {{--<i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>--}}
+                                            {{--</button>--}}
+                                        {{--{{Form::close()}}--}}
 
-                        </tr>
-                         @endforeach
-                         @endif
-                        </tbody>
-                    </table>
-                </div>
-                </form>
+                                      </div>
+                                    </td>
+                                    <td><input type="checkbox" name="delid[]" value="{{ $provider->id }}" >   </td>
+
+                                </tr>
+                                 @endforeach
+                                 @endif
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
             <!-- /.box-body -->
             </div>
             <!-- /.box -->

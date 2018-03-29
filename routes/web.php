@@ -20,15 +20,20 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
 
     Route::get('/', 'DashboardController@index');
     Route::resource('/categories', 'CategoriesController');
+
+
     Route::resource('/providers', 'ProvidersController');
     Route::resource('/products', 'ProductsController');
     Route::resource('/users', 'UsersController');
     Route::resource('/manager-providers', 'MprovidersController');
 
 
-    Route::get('/import-export', 'ExcelprovidersController@export');
-    Route::post('/import-export', 'ExcelprovidersController@import');
-    Route::get('/import-export', 'ExcelprovidersController@index');
+    Route::get('/providers-export', 'ProvidersController@export')->name('provider.export');
+    Route::post('/providers-import', 'ProvidersController@import')->name('provider.import');
 
-    Route::post('/del', 'ProvidersController@del');
+//    Route::get('/import-export', 'ExcelprovidersController@export');
+//    Route::post('/import-export', 'ExcelprovidersController@import');
+//    Route::get('/import-export', 'ExcelprovidersController@index');
+
+    Route::post('/del', 'ProvidersController@del')->name('provider.del');
 });

@@ -120,5 +120,53 @@ class ProvidersController extends Controller
 
 
 
+    public  function export() {
+        $provider = Provider::select('name', 'link', 'slug')->get();
+        return Excel::create('Экспорт Поставщиков', function ($excel) use($provider) {
+            $excel->sheet('mysheet', function ($sheet) use ($provider) {
+                $sheet->fromArray($provider);
+            });
+        })->export('xlsx');
+    }
+
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function import(Request $request) {
+        if($request->file('file'))
+        {
+            $path = $request->file('file')->getRealPath();
+            $data = Excel::load($path, function($reader) {
+            })->get();
+            if(!empty($data) && $data->count()) {
+                foreach ($data as $key => $value) {
+                    Provider::create([
+                        'name' => $value['name'],
+                        'desc' => $value['desc'],
+                        'link' => $value['link'],
+                    ]);
+                }
+
+
+//            foreach ($data->toArray() as $key => $value) {
+//                if (!empty($value)) {
+//                    foreach ($value as $v) {
+//                        $provider = new Provider();
+//                        $provider[] = ['name' => $v['name'],
+//                            'desc' => $v['desc'],
+//                            'link' => $v['link'],
+////                            'comp_id' => $request->get('Comp_id'),
+//                        ];
+//                    }
+//                }
+//                $provider->save();
+//
+//            }
+            }
+        }
+        return back();
+    }
 
 }
