@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoriesController extends Controller
 {
@@ -65,5 +66,33 @@ class CategoriesController extends Controller
 
         Category::find($id)->delete();
         return redirect()->route('categories.index');
+    }
+
+
+    //-********************************
+    public  function export() {
+        $provider = Category::select('title', 'slug')->get();
+        return Excel::create('Экспорт Поставщиков', function ($excel) use($provider) {
+            $excel->sheet('mysheet', function ($sheet) use ($provider) {
+                $sheet->fromArray($provider);
+            });
+        })->export('xlsx');
+    }
+
+    public function import(Request $request) {
+        $this->validate($request, [
+            'file' => 'required',
+        ]);
+
+        $path = $request->file('file')->getRealPath();
+        $data = Excel::load($path, function($reader) {})->get();
+        if(!empty($data) && $data->count()) {
+            foreach ($data as $key => $value) {
+              Category::create([
+                  'title' => $value->title,
+              ]);
+            }
+        }
+        return back();
     }
 }

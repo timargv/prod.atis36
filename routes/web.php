@@ -31,6 +31,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
     Route::get('/providers-export', 'ProvidersController@export')->name('provider.export');
     Route::post('/providers-import', 'ProvidersController@import')->name('provider.import');
 
+    Route::get('/category-export', 'CategoriesController@export')->name('categories.export');
+    Route::post('/category-import', 'CategoriesController@import')->name('categories.import');
+
 //    Route::get('/import-export', 'ExcelprovidersController@export');
 //    Route::post('/import-export', 'ExcelprovidersController@import');
 //    Route::get('/import-export', 'ExcelprovidersController@index');

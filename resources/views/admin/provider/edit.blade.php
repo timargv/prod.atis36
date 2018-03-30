@@ -24,6 +24,10 @@
             <input type="text" class="form-control" autofocus id="exampleInputEmail1" placeholder="" name="name" value="{{ $provider->name }}">
           </div>
           <div class="form-group">
+            <label for="exampleInputEan">Артикул поставщика *</label>
+            <input type="text" class="form-control"  id="exampleInputEan" placeholder="Например 100" name="ean" value="{{ $provider->ean }}">
+          </div>
+          <div class="form-group">
             <label for="exampleInputLink">Ссылка на Поставщика *</label>
             <input type="text" class="form-control" id="exampleInputLink" placeholder="" name="link" value="{{ $provider->link }}">
           </div>

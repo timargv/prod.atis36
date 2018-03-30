@@ -32,10 +32,7 @@
                     <div class="form-group">
                         <a href="{{route('providers.create')}}" class="btn btn-success">Добавить</a>
                         <a href="{{ route('provider.export') }}" class="btn btn-success">Export</a>
-                        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Import
-                        </a>
-
-
+                        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Import</a>
                     </div>
                         <div class="collapse" id="collapseExample">
                             <div class="well">
@@ -51,9 +48,7 @@
                         </div>
                         <form method="POST" action="{{ route('provider.del') }}">
                             {!! csrf_field() !!}
-                            <div class="">
-                                <button class="btn btn-danger pull-right" type="submit" @if($providers->count() == null)disabled="disabled"@endif>Удалить выделеные</button>
-                            </div>
+
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
@@ -89,6 +84,9 @@
                                  @endif
                                 </tbody>
                             </table>
+                            <div class="">
+                                <button class="btn btn-danger pull-right" type="submit" @if($providers->count() == null)disabled="disabled"@endif>Удалить выделеные</button>
+                            </div>
                         </form>
                     </div>
             <!-- /.box-body -->

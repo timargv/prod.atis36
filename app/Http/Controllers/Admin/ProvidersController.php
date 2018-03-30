@@ -39,6 +39,7 @@ class ProvidersController extends Controller
       $this->validate($request, [
         'name' => 'required',
         'link' => 'required',
+        'ean'  => 'nullable',
         'desc' => 'nullable',
         'full_name_provider' => 'nullable',
         'ur_address_provider' => 'nullable',
@@ -79,6 +80,7 @@ class ProvidersController extends Controller
       $this->validate($request, [
         'name' => 'required',
         'link' => 'required',
+        'ean'  => 'nullable',
         'desc' => 'nullable',
         'full_name_provider' => 'nullable',
         'ur_address_provider' => 'nullable',
@@ -122,7 +124,7 @@ class ProvidersController extends Controller
 
 
     public  function export() {
-        $provider = Provider::select('name', 'link', 'slug')->get();
+        $provider = Provider::select('name', 'link', 'ean', 'slug')->get();
         return Excel::create('Экспорт Поставщиков', function ($excel) use($provider) {
             $excel->sheet('mysheet', function ($sheet) use ($provider) {
                 $sheet->fromArray($provider);
@@ -147,12 +149,16 @@ class ProvidersController extends Controller
               Provider::create([
                   'name' => $value->name,
                   // 'desc' => $value->desc,
+                  'ean'  => $value->ean,
                   'link' => $value->link,
-                  'slug' => $value->slug,
               ]);
             }
+        }
+        return back();
+    }
+}
 
-//            $category = Category::firstOrCreate([
+// $category = Category::firstOrCreate([
 //                'title' => $xlsx['category'],
 //            ]);
 //
@@ -164,7 +170,7 @@ class ProvidersController extends Controller
 //                        $provider[] = ['name' => $v['name'],
 //                            'desc' => $v['desc'],
 //                            'link' => $v['link'],
-                          //    'category_id' => $categoty->id, 
+                         //    'category_id' => $categoty->id,
 
 ////                            'comp_id' => $request->get('Comp_id'),
 //                        ];
@@ -173,9 +179,3 @@ class ProvidersController extends Controller
 //                $provider->save();
 //
 //            }
-            }
-
-        return back();
-    }
-
-}

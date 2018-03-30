@@ -14,6 +14,7 @@ class AddFieldProviders extends Migration
     public function up()
     {
         Schema::table('providers', function (Blueprint $table) {
+            $table->string('ean')->nullable();
             $table->string('full_name_provider')->nullable();
             $table->string('ur_address_provider')->nullable();
             $table->string('fz_address_provider')->nullable();
@@ -38,6 +39,7 @@ class AddFieldProviders extends Migration
     public function down()
     {
         Schema::table('providers', function (Blueprint $table) {
+            $table->string('ean')->nullable();
             $table->dropColumn('full_name_provider')->nullable();
             $table->dropColumn('ur_address_provider')->nullable();
             $table->dropColumn('fz_address_provider')->nullable();

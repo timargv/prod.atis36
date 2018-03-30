@@ -28,6 +28,20 @@
                 <div class="box-body">
                     <div class="form-group">
                         <a href="{{route('categories.create')}}" class="btn btn-success">Добавить</a>
+                        <a href="{{ route('categories.export') }}" class="btn btn-success">Export</a>
+                        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Import</a>
+                    </div>
+                    <div class="collapse" id="collapseExample">
+                        <div class="well">
+                            <form method="post" action="{{ route('categories.import') }}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <input type="file" name="file" id="exampleInputFile">
+                                </div>
+                                <button type="submit" class="btn btn-default">Отправить</button>
+                            </form>
+
+                        </div>
                     </div>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
