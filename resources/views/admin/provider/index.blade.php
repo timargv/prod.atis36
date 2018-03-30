@@ -35,24 +35,25 @@
                         <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Import
                         </a>
 
-                    @if($providers->count())
-                            <button class="btn btn-danger pull-right" type="submit">Удалить выделеные</button>
-                        @endif
+
                     </div>
                         <div class="collapse" id="collapseExample">
                             <div class="well">
                                 <form method="post" action="{{ route('provider.import') }}" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class="form-group">
-                                        <input type="file" id="exampleInputFile">
+                                        <input type="file" name="file" id="exampleInputFile">
                                     </div>
                                     <button type="submit" class="btn btn-default">Отправить</button>
                                 </form>
 
                             </div>
                         </div>
-                        <form method="POST" action="{{ Url('/admin/del') }}">
+                        <form method="POST" action="{{ route('provider.del') }}">
                             {!! csrf_field() !!}
+                            <div class="">
+                                <button class="btn btn-danger pull-right" type="submit" @if($providers->count() == null)disabled="disabled"@endif>Удалить выделеные</button>
+                            </div>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>

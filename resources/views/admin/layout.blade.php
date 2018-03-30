@@ -393,7 +393,7 @@
 <script src="/js/admin.js"></script>
 <script type="text/javascript">
     $("#checkAll").change(function () {
-        $("input:checkbox").prop('checked', $(this).prop("checked")).addClass('csa');
+        $("input:checkbox").prop('checked', $(this).prop("checked"));
     });
 
 

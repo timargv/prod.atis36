@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Provider;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -135,20 +136,26 @@ class ProvidersController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function import(Request $request) {
-        if($request->file('file'))
-        {
-            $path = $request->file('file')->getRealPath();
-            $data = Excel::load($path, function($reader) {
-            })->get();
-            if(!empty($data) && $data->count()) {
-                foreach ($data as $key => $value) {
-                    Provider::create([
-                        'name' => $value['name'],
-                        'desc' => $value['desc'],
-                        'link' => $value['link'],
-                    ]);
-                }
+        $this->validate($request, [
+            'file' => 'required',
+        ]);
 
+        $path = $request->file('file')->getRealPath();
+        $data = Excel::load($path, function($reader) {})->get();
+        if(!empty($data) && $data->count()) {
+            foreach ($data as $key => $value) {
+              Provider::create([
+                  'name' => $value->name,
+                  // 'desc' => $value->desc,
+                  'link' => $value->link,
+                  'slug' => $value->slug,
+              ]);
+            }
+
+//            $category = Category::firstOrCreate([
+//                'title' => $xlsx['category'],
+//            ]);
+//
 
 //            foreach ($data->toArray() as $key => $value) {
 //                if (!empty($value)) {
@@ -157,6 +164,8 @@ class ProvidersController extends Controller
 //                        $provider[] = ['name' => $v['name'],
 //                            'desc' => $v['desc'],
 //                            'link' => $v['link'],
+                          //    'category_id' => $categoty->id, 
+
 ////                            'comp_id' => $request->get('Comp_id'),
 //                        ];
 //                    }
@@ -165,7 +174,7 @@ class ProvidersController extends Controller
 //
 //            }
             }
-        }
+
         return back();
     }
 

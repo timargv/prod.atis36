@@ -22,7 +22,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
     Route::resource('/categories', 'CategoriesController');
 
 
-    Route::resource('/providers', 'ProvidersController');
+    Route::resource('providers', 'ProvidersController');
     Route::resource('/products', 'ProductsController');
     Route::resource('/users', 'UsersController');
     Route::resource('/manager-providers', 'MprovidersController');
