@@ -25,7 +25,7 @@ class CreateMprovidersTable extends Migration
             $table->string('email_con_p')->nullable();
             $table->integer('provider_id')->nullable();
             $table->integer('user_id')->nullable();
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

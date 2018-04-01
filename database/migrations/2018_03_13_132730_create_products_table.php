@@ -17,13 +17,13 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('num');
-            $table->float('prc')->default(0);
+            $table->float('prc')->nullable();
             $table->text('desc')->nullable();
             $table->string('site')->nullable();
             $table->string('image')->nullable();
             $table->integer('provider_id')->nullable();
             $table->integer('category_id')->nullable();
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(1);
             $table->integer('user_id')->nullable();
             $table->string( 'slug');
             $table->timestamps();

@@ -25,7 +25,7 @@ class Product extends Model
 {
     //
     use Sluggable;
-    protected $fillable = ['title', 'desc', 'prc', 'num', 'site', 'date'];
+    protected $fillable = ['title', 'desc', 'prc', 'num', 'site',  'status', 'image', 'user_id'];
 
     public function category() {
 

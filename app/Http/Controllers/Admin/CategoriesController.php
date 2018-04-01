@@ -72,7 +72,7 @@ class CategoriesController extends Controller
     //-********************************
     public  function export() {
         $provider = Category::select('title', 'slug')->get();
-        return Excel::create('Экспорт Поставщиков', function ($excel) use($provider) {
+        return Excel::create('Экспорт Категории', function ($excel) use($provider) {
             $excel->sheet('mysheet', function ($sheet) use ($provider) {
                 $sheet->fromArray($provider);
             });

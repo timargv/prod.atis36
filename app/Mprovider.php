@@ -20,7 +20,7 @@ class Mprovider extends Model
 
     use Sluggable;
 
-    protected $fillable = ['name_con_p', 'surname_con_p', 'patronymic_con_p', 'position_con_p', 'mobile_con_p', 'office_con_p', 'officedob_con_p', 'email_con_p'];
+    protected $fillable = ['name_con_p', 'slug', 'provider_id', 'surname_con_p', 'patronymic_con_p', 'position_con_p', 'mobile_con_p', 'office_con_p', 'officedob_con_p', 'email_con_p'];
 
     //-****************************************
 

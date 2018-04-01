@@ -26,10 +26,16 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="form-group">
-                        <a href="{{route('categories.create')}}" class="btn btn-success">Добавить</a>
-                        <a href="{{ route('categories.export') }}" class="btn btn-success">Export</a>
-                        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Import</a>
+                    <div class="form-group clearfix">
+                      <div class="btn-group pull-left" role="group">
+                          <a href="{{route('categories.create')}}" class="btn btn-success">Добавить</a>
+                      </div>
+                      <div class="form-group btn-group pull-right" role="group">
+                        @if($categories->count() != null)                        
+                          <a href="{{ route('categories.export') }}" class="btn btn-default">Export</a>
+                        @endif
+                          <a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Import</a>
+                      </div>
                     </div>
                     <div class="collapse" id="collapseExample">
                         <div class="well">

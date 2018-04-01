@@ -7,6 +7,7 @@ use App\Provider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class MprovidersController extends Controller
@@ -15,7 +16,7 @@ class MprovidersController extends Controller
 
     public function index()
     {
-        $mproviders = Mprovider::paginate(10);
+        $mproviders = Mprovider::paginate(500);
         return view('admin.manager-providers.index', compact('mproviders'));
     }
 
@@ -90,5 +91,50 @@ class MprovidersController extends Controller
     {
         Mprovider::find($id)->delete();
         return redirect()->route('manager-providers.index');
+    }
+
+
+    //-****************************************
+
+    public function export()
+    {
+        $mprovider = Mprovider::with('provider')
+            ->get()
+            ->map(function (Mprovider $mprovider) {
+                return [
+                    'name_con_p' => $mprovider->name_con_p,
+                    'email_con_p' => $mprovider->email_con_p,
+                    'slug' => $mprovider->slug,
+                    'provider' => $mprovider->provider->name ?? '',
+                ];
+            });
+        return Excel::create('Экспорт мэнэджеров', function ($excel) use ($mprovider) {
+            $excel->sheet('Лист', function ($sheet) use ($mprovider) {
+                $sheet->fromArray($mprovider);
+            });
+        })->export('xlsx');
+
+    }
+
+
+    //-****************************************
+
+    public function import(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required',
+        ]);
+        $data = Excel::load($request->file('file')->getRealPath())->get();
+        foreach ($data as $key => $value) {
+            $attributes = $value->only('name_con_p', 'first_name', 'middle_name', 'last_name', 'email', 'slug')->toArray();
+            if ($value['provider']) {
+                $provider = Provider::firstOrCreate([
+                    'name' => $value['provider']
+                ]);
+                $attributes['provider_id'] = $provider->id;
+            }
+            Mprovider::create($attributes);
+        }
+        return back();
     }
 }

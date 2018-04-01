@@ -26,8 +26,28 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="form-group">
+                    <div class="form-group clearfix">
+                      <div class="btn-group pull-left" role="group">
                         <a href="{{ route('manager-providers.create') }}" class="btn btn-success">Добавить</a>
+                      </div>
+                      <div class="form-group btn-group pull-right" role="group">
+                        @if($mproviders->count() != null)
+                          <a href="{{ route('mprovider.export') }}" class="btn btn-default">Export</a>
+                        @endif
+                          <a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Import</a>
+                      </div>
+                    </div>
+                    <div class="collapse" id="collapseExample">
+                        <div class="well">
+                            <form method="post" action="{{ route('mprovider.import') }}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <input type="file" name="file" id="exampleInputFile">
+                                </div>
+                                <button type="submit" class="btn btn-default">Отправить</button>
+                            </form>
+
+                        </div>
                     </div>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>

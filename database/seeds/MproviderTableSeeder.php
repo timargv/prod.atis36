@@ -11,6 +11,6 @@ class MproviderTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Mprovider::class, 50)->create();
+        factory(App\Mprovider::class, 5000)->create();
     }
 }

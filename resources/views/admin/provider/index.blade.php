@@ -29,11 +29,18 @@
 
 
                     <div class="box-body">
-                    <div class="form-group">
-                        <a href="{{route('providers.create')}}" class="btn btn-success">Добавить</a>
-                        <a href="{{ route('provider.export') }}" class="btn btn-success">Export</a>
-                        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Import</a>
-                    </div>
+
+                      <div class="form-group clearfix">
+                        <div class="btn-group pull-left" role="group">
+                            <a href="{{route('providers.create')}}" class="btn btn-success">Добавить</a>
+                        </div>
+                        <div class="form-group btn-group pull-right" role="group">
+                          @if($providers->count() != null)
+                            <a href="{{ route('provider.export') }}" class="btn btn-default">Export</a>
+                          @endif
+                            <a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Import</a>
+                        </div>
+                      </div>
                         <div class="collapse" id="collapseExample">
                             <div class="well">
                                 <form method="post" action="{{ route('provider.import') }}" enctype="multipart/form-data">
@@ -69,11 +76,11 @@
                                     <td>
                                       <div class="btn-group" role="group">
                                         <a href="{{route('providers.edit', $provider->id)}}"  class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
-                                        {{--{{ Form::open(['route' => ['providers.destroy', $provider->id], 'method' => 'delete', 'class' => 'btn btn-danger btn-sm'])}}--}}
-                                            {{--<button onclick="return confirm('Вы уверены?')" type="submit">--}}
-                                                {{--<i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>--}}
-                                            {{--</button>--}}
-                                        {{--{{Form::close()}}--}}
+                                        {{-- {{ Form::open(['route' => ['providers.destroy', $provider->id], 'method' => 'delete', 'class' => 'btn btn-danger btn-sm'])}}
+                                            <button onclick="return confirm('Вы уверены?')" type="submit">
+                                                <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
+                                            </button>
+                                        {{Form::close()}} --}}
 
                                       </div>
                                     </td>
@@ -85,7 +92,7 @@
                                 </tbody>
                             </table>
                             <div class="">
-                                <button class="btn btn-danger pull-right" type="submit" @if($providers->count() == null)disabled="disabled"@endif>Удалить выделеные</button>
+                                <button class="btn btn-danger pull-right" type="submit" @if($providers->count() == null)disabled="disabled"@endif>Удалить</button>
                             </div>
                         </form>
                     </div>

@@ -17,7 +17,7 @@ class CreateProvidersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('desc')->nullable();
-            $table->string('link');
+            $table->string('link')->nullable();
             $table->string('slug');
             $table->timestamps();
         });

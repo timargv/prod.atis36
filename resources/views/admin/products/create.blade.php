@@ -73,18 +73,7 @@
               }}
 
             </div>
-            <!-- Date -->
-            <div class="form-group">
-              <label>Дата:</label>
-
-              <div class="input-group date">
-                <div class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
-                </div>
-                <input type="text" class="form-control pull-right" id="datepicker" name="date" value="{{ old('date') }}">
-              </div>
-              <!-- /.input group -->
-            </div>
+            
 
             <!-- checkbox -->
             <div class="form-group">
