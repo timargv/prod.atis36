@@ -113,6 +113,7 @@ class ProductsController extends Controller
                     'title' => $product->title,
                     'num' => $product->num,
                     'prc' => $product->prc,
+                    'site' => $product->site ?? '',
                     'image' => $product->image,
                     'status' => $product->status,
                     'slug' => $product->slug,

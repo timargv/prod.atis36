@@ -50,6 +50,7 @@
             <div class="form-group">
               <label>Категория</label>
               {{ Form::select('category_id',
+
                 $categories,
                 $product->getCategoryID(),
                 ['class' => 'form-control select2', 'style' => 'width: 100%;', 'data-placeholder'=>'Выберите Категорию'])
@@ -96,7 +97,7 @@
         <!-- /.box-body -->
         <div class="box-footer" style="padding: 15px 10px 15px;">
             <a href="{{ route('products.index') }}" class="btn btn-default" >Назад</a>
-            <button class="btn btn-success pull-right">Добавить</button>
+            <button class="btn btn-success pull-right">Обновить</button>
         </div>
         <!-- /.box-footer-->
       </div>

@@ -16,3 +16,8 @@ $(document).ready(function (){
     $("#exampleInputOffice").inputmask("+7 (999) 999-99-99");
     // $("#exampleInputEmail").inputmask("_____@_.");
 });
+
+$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });

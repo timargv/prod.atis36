@@ -20,7 +20,8 @@ mix.styles([
     'resources/assets/admin/plugins/select2/select2.min.css',
     'resources/assets/admin/plugins/datatables/dataTables.bootstrap.css',
     'resources/assets/admin/dist/css/AdminLTE.min.css',
-    'resources/assets/admin/dist/css/skins/_all-skins.min.css'
+    'resources/assets/admin/dist/css/skins/_all-skins.min.css',
+    'resources/assets/admin/dist/css/ekko-lightbox.css',
 ], 'public/css/admin.css');
 
 mix.scripts([
@@ -34,6 +35,7 @@ mix.scripts([
     'resources/assets/admin/plugins/fastclick/fastclick.js',
     'resources/assets/admin/plugins/iCheck/icheck.min.js',
     'resources/assets/admin/plugins/input-mask/jquery.inputmask.js',
+    'resources/assets/admin/dist/js/ekko-lightbox.min.js',
     'resources/assets/admin/dist/js/app.min.js',
     'resources/assets/admin/dist/js/demo.js',
     'resources/assets/admin/dist/js/scripts.js'
