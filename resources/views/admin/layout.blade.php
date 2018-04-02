@@ -396,7 +396,10 @@
         $("input:checkbox").prop('checked', $(this).prop("checked"));
     });
 
-
+    // $('#deleteMany').on('click', function (e) {
+    //          e.preventDefault();
+    //         document.getElementById('delete-form').submit();
+    // });
 </script>
 
 </body>

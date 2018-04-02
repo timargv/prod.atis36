@@ -17,7 +17,9 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('admin.products.index', compact('products'));
+        $categories = Category::pluck('title', 'id')->all();
+        $providers = Provider::pluck('name', 'id')->all();
+        return view('admin.products.index', compact('categories', 'providers', 'products'));
     }
 
     //-****************************

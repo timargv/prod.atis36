@@ -29,6 +29,8 @@
               <div class="form-group clearfix">
                 <div class="btn-group pull-left" role="group">
                   <a href="{{ route('products.create')}}" class="btn btn-success">Добавить</a>
+                  <a role="button" data-toggle="collapse" class="btn btn-success" href="#collapseTable" aria-expanded="false" aria-controls="collapseTable">Быстрое добавление</a>
+
                 </div>
                 <div class="form-group btn-group pull-right" role="group">
                   @if($products->count() != null)
@@ -36,6 +38,74 @@
                   @endif
                     <a class="btn btn-danger btn-flat" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-fw fa-cloud-upload"></i> Import</a>
                 </div>
+              </div>
+              <div class="collapse" id="collapseTable">
+
+                <table class="table table-bordered table-striped" style="margin: 0 auto 15px;">
+                  <thead>
+                  <tr>
+                    <th style="width: 20%">Название </th>
+                    <th style="width: 10%">Артикул </th>
+                    <th style="width: 12%">Ссылка на сайте </th>
+                    <th style="width: 10%">Цена </th>
+                    <th style="width: 8%">Картинка </th>
+                    <th style="width: 20%">Цена </th>
+                    <th style="width: 20%">Цена </th>
+                  </tr>
+                  </thead>
+
+                  <tbody>
+                  {{ Form::open(['route' => 'products.store', 'files' => true ])}}
+                  @include('admin.errors')
+
+                  <tr >
+                    <td>
+                      <input type="text" class="form-control" id="exampleInputTitle" placeholder="" name="title" value="{{ old('title') }}">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="exampleInputNum" placeholder="" name="num" value="{{ old('num') }}">
+                    </td>
+                    <td>
+                      <input type="url" class="form-control" id="exampleInputSite" placeholder="" name="site" value="{{ old('site') }}">
+                    </td>
+                    <td>
+                      <input type="number" min="1" step="any" class="form-control" id="exampleInputPrc" placeholder="1.123,50" name="prc" value="{{ old('prc') }}">
+                    </td>
+                    <td>
+                      <input type="file" id="exampleInputFile" name="image">
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        {{ Form::select('category_id',
+                          $categories,
+                          null,
+                          ['class' => 'form-control select2', 'style' => 'width: 100%;'])
+                        }}
+
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        {{ Form::select('provider_id',
+                          $providers,
+                          null,
+                          ['class' => 'form-control select2', 'style' => 'width: 100%;'])
+                        }}
+
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="7">
+                      <div class="" style="width: 200px; margin: auto; padding: 5px;">
+                          <a role="button" data-toggle="collapse" class="btn btn-danger" href="#collapseTable" aria-expanded="false" aria-controls="collapseTable">Закрыть</a>
+                          <button class="btn btn-success ">Добавить</button>
+                      </div>
+                    </td>
+                  </tr>
+                  {{ Form::close() }}
+                </tbody>
+                </table>
               </div>
               <div class="collapse" id="collapseExample">
                 <table class="table table-bordered">
