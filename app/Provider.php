@@ -17,6 +17,7 @@ class Provider extends Model
     //
     use Sluggable;
 
+    
     protected $fillable = ['name', 'desc', 'link'];
 
     public function products(){
